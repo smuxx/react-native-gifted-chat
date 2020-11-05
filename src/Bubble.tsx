@@ -150,6 +150,8 @@ export interface BubbleProps<TMessage extends IMessage> {
   usernameStyle?: TextStyle
   quickReplyStyle?: StyleProp<ViewStyle>
   onLongPress?(context?: any, message?: any): void
+  onShortPress?(currentMessage?: any, listIndex?: number): void
+  listIndex?: number
   onQuickReply?(replies: Reply[]): void
   renderMessageImage?(props: RenderMessageImageProps<TMessage>): React.ReactNode
   renderMessageVideo?(props: RenderMessageVideoProps<TMessage>): React.ReactNode
@@ -173,6 +175,7 @@ export default class Bubble<
   static defaultProps = {
     touchableProps: {},
     onLongPress: null,
+    onShortPress: null,
     renderMessageImage: null,
     renderMessageVideo: null,
     renderMessageAudio: null,
@@ -205,6 +208,7 @@ export default class Bubble<
     user: PropTypes.object.isRequired,
     touchableProps: PropTypes.object,
     onLongPress: PropTypes.func,
+    onShortPress: PropTypes.func,
     renderMessageImage: PropTypes.func,
     renderMessageVideo: PropTypes.func,
     renderMessageAudio: PropTypes.func,
@@ -272,6 +276,12 @@ export default class Bubble<
           }
         },
       )
+    }
+  }
+
+  onShortPress = () => {
+    if (this.props.onShortPress) {
+        this.props.onShortPress(this.props.currentMessage, this.props.listIndex);
     }
   }
 

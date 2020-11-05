@@ -677,6 +677,12 @@ class GiftedChat<TMessage extends IMessage = IMessage> extends React.Component<
     }
   }
 
+  scrollToIndex(params: any) {
+		if (this._messageContainerRef && this._messageContainerRef.current) {
+            this._messageContainerRef.current.scrollToIndex(params);
+        }
+	}
+
   renderMessages() {
     const { messagesContainerStyle, ...messagesContainerProps } = this.props
     const fragment = (

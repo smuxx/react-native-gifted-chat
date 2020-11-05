@@ -34,7 +34,8 @@ const styles = {
 export interface MessageProps<TMessage extends IMessage> {
   key: any
   showUserAvatar?: boolean
-  position: 'left' | 'right'
+  position: 'left' | 'right',
+  listIndex: number
   currentMessage?: TMessage
   nextMessage?: TMessage
   previousMessage?: TMessage
@@ -60,6 +61,7 @@ export default class Message<
     renderDay: null,
     renderSystemMessage: null,
     position: 'left',
+    listIndex: 0,
     currentMessage: {},
     nextMessage: {},
     previousMessage: {},

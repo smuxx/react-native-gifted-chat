@@ -243,6 +243,7 @@ export default class MessageContainer<
         inverted,
         nextMessage,
         position: item.user._id === user._id ? 'right' : 'left',
+        listIndex: index,
       }
 
       if (this.props.renderMessage) {
